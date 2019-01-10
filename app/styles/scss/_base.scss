@@ -1,0 +1,77 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  position                : relative;
+  min-height              : 100%;
+}
+
+body {
+  text-rendering        : optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family           : $font-Curator-Regular;
+  font-size             : 14px;
+  line-height           : 24px;
+  color                 : #B3B3B3;
+  min-height            : 100%;
+  @media (min-width: $d_medium) {
+    font-size  : 16px;
+    line-height: 26px;
+  }
+}
+
+h1 {
+  font-family: $font-SelaneMinTen;
+  font-size  : 2.5rem;
+  line-height: 1.3em;
+  @include breakpoint($d_medium) {
+    font-size: 4.4rem;
+  }
+}
+
+h2 {
+  // font-size  : 1.5rem;
+  font-size    : 30px;
+  line-height  : 100%;
+  // margin     : 0;
+  color        : $black;
+  margin-bottom: 10px;
+  line-height  : 1.2;
+}
+
+h3 {
+  font-size  : 1.8rem;
+  line-height: 60%;
+  color      : $black;
+}
+
+a {
+  text-decoration: none;
+  color          : #5a9ddc;
+
+  &:hover {
+    color: #467aa5;
+  }
+}
+
+p {
+  margin-bottom: 20px;
+  color        : $black;
+  line-height  : 27px;
+  font-size    : 20px;
+  font-family  : $font-SelaneTen;
+}
+
+strong {
+  font-family: $font-SelaneWebSTFifty;
+}
+
+button {
+  cursor: pointer;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+label {
+  color: #333;
+}

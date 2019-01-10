@@ -1,0 +1,121 @@
+// Span Mixin
+// ----------
+@mixin span(
+  $span,
+  $config: ()
+) {
+  @if index($span, isolate) {
+    $_span: ();
+    $_i: 1;
+
+    @while $_i <= length($span) {
+      $_this: nth($span, $_i);
+      @if($_i != index($span, isolate)){
+        $_span: append($_span, $_this);
+      }
+      $_i:$_i + 1;
+    }
+    $span:$_span;
+  }
+
+  $context: susy-compile($span, $config);
+  width: su-call('su-span', $context);
+  // width: span($span, $config);
+  @if index($span, 'last') {
+    float: right;
+    // margin-right: 0; if you want an explicit reset
+  } @else {
+    float: left;
+    margin-right: su-call('su-gutter', $context);
+    // margin-right: gutter();
+
+  }
+}
+
+@mixin gallery(
+  $span,
+  $flag_padding:10px,
+  $config: ('gutters':$flag_padding)
+) {
+  $grid: susy-compile($span, $config);
+  $span: map-get($grid, 'span');
+  $column-count: length(map-get($grid, 'columns'));
+  $count: floor($column-count / $span);
+  $spread: map-get($grid, 'spread') + 2;
+  $container-spread: map-get($grid, 'container-spread') + 2;
+  $extra: ($container-spread - $spread) * 0.5;
+  $extra-push: su-call('su-gutter', $grid) * $extra;
+
+  float: left;
+  // margin-right: -100%;
+  @for $n from 1 through ($count) {
+    $nth: unquote('#{$count}n + #{$n}');
+    $location: $span * ($n - 1) + 1;
+
+    &:nth-child(#{$nth}) {
+      margin-right: -100%;
+      $width: susy-compile($span at $location, $grid);
+      width: su-call('su-span', $width);
+
+      @if ($location > 1) {
+        $wide: susy-compile('first' $location - 1 'wide', $grid);
+        clear: none;
+        $margin_left_part: su-call('su-span', $wide);
+        margin-left: calc(#{$margin_left_part} + #{$extra-push});
+      } @else {
+        clear: both;
+        margin-left: if($extra-push > 0, $extra-push, 0);
+      }
+    }
+  }
+}
+
+@mixin container(
+  $width: $d_large,
+  $config: $susy,
+  $debug: false
+) {
+  $config: susy-settings($config);
+  $container-spread: map-get($config, 'container-spread');
+  $width: span($width $container-spread of $container-spread, $config);
+
+  @include clearfix;
+  margin: 0 auto;
+  max-width: $width or 100%;
+
+  @if $debug {
+    background: susy-svg-grid($grid: $config) no-repeat scroll;
+  }
+}
+@mixin background($file_name,$position:0 0,$repeat: repeat) {
+	background: {
+		image: url("#{$images_dir}#{$file_name}");
+		position: $position;
+		repeat: $repeat;
+	}
+}
+@mixin backImage ($image) {
+    background-image: url($image);
+		background-repeat: no-repeat;
+		background-position: center center;
+    background-size: cover;
+}
+@mixin center_div_vertical {
+	position: absolute;
+	top: 50%;
+	@include translateY(-50%);
+}
+@mixin center_div {
+	margin: 0 auto;
+}
+@mixin clearfix() {
+	&:after,
+	&:before {
+		content: " "; // 1
+		display: table; // 2
+	}
+
+	&:after {
+		clear: both;
+	}
+}

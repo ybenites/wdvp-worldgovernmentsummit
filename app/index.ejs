@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html data-vue-meta-server-rendered lang="<%= htmlWebpackPlugin.options.lang %>">
+
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta name="apple-mobile-web-app-title" content="ST" />
+  <meta name="application-name" content="The lorem lorem" />
+  <meta name="msapplication-TileColor" content="#0c2b57" />
+  <meta name="theme-color" content="#0c2b57">
+
+  <meta property="fb:app_id" content="748050775275737" />
+  <meta property="og:site_name" content="lorem" />
+  <meta property="og:type" content="article" />
+
+  <meta name="twitter:app:name:iphone" content="The lorem lorem for iPhone" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@STcom" />
+
+  <% if (Array.isArray(htmlWebpackPlugin.options.meta)) { %>
+  <% for (item of htmlWebpackPlugin.options.meta) { %>
+  <meta data-vue-meta <% for (key in item) { %>
+  <%= key %>="
+  <%= item[key] %>"
+  <% } %>/>
+  <% } %>
+  <% } %>
+
+
+  <script data-schema="NewsArticle" type="application/ld+json">
+    <%= htmlWebpackPlugin.options.schema %>
+  </script>
+
+  <!-- For everything else -->
+
+  <!--[if IE 6]>
+  <div id="error">
+    <link rel="stylesheet" href="css/stcssie.css">
+    <p style="background-color:#FFE5A6; font-size:12px; font-family: 'Arial', sans-serif; padding:3px;margin-bottom:0;">This web special requires a browser with SVG support, such as
+      <a style="color:#0088FF;" href="http://www.google.com/chrome">Chrome</a>,
+      <a style="color:#0088FF;" href="http://www.mozilla.org/en-US/firefox/">Firefox</a>,
+      <a style="color:#0088FF;" href="http://www.apple.com/safari/download/">Safari</a> or
+      <a style="color:#0088FF;" href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">IE 9</a>
+    </p>
+    <img src="images/error/image_error.png"  alt="Error">
+  </div>
+  <![endif] -->
+  <!--[if IE 7]>
+  <div id="error">
+    <link rel="stylesheet" href="css/stcssie.css">
+    <p style="background-color:#FFE5A6; font-size:12px; font-family: 'Arial', sans-serif; padding:3px;margin-bottom:0;">This web special requires a browser with SVG support, such as
+      <a style="color:#0088FF;" href="http://www.google.com/chrome">Chrome</a>,
+      <a style="color:#0088FF;" href="http://www.mozilla.org/en-US/firefox/">Firefox</a>,
+      <a style="color:#0088FF;" href="http://www.apple.com/safari/download/">Safari</a> or
+      <a style="color:#0088FF;" href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">IE 9</a>
+    </p>
+    <img src="images/error/image_error.png" alt="Error">
+  </div>
+  <![endif] -->
+  <!--[if IE 8]>
+  <div id="error">
+  <link rel="stylesheet" href="css/stcssie.css">
+    <p style="background-color:#FFE5A6; font-size:12px; font-family: 'Arial', sans-serif; padding:3px;margin-bottom:0;">This web special requires a browser with SVG support, such as
+      <a style="color:#0088FF;" href="http://www.google.com/chrome">Chrome</a>,
+      <a style="color:#0088FF;" href="http://www.mozilla.org/en-US/firefox/">Firefox</a>,
+      <a style="color:#0088FF;" href="http://www.apple.com/safari/download/">Safari</a> or
+      <a style="color:#0088FF;" href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home">IE 9</a>
+    </p>
+    <img src="images/error/image_error.png" alt="Error">
+  </div>
+  <![endif] -->
+  <!-- Adds HTML5 element support for earlier versions of IE -->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="wrapper-page" class="scrollContainer">
+    <div id="st-content-graphic">
+    </div>
+  </div>
+  <div id="fb-root"></div>
+  <!-- <script type="text/javascript" src="js/components.js"></script> -->
+  <!-- <script type="text/javascript" src="js/app.js"></script> -->
+
+</body>
+
+</html>
