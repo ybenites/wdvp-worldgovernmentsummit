@@ -1,0 +1,11 @@
+/nbproject/private/
+
+#elimina udenplan
+graphics/*
+dbdumps
+
+/**/node_modules/**
+/**/.sass-cache/**
+
+/**/production/**
+/**/dev/**

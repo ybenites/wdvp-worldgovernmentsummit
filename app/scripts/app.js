@@ -1,5 +1,5 @@
 /* eslint-disable camelcase, no-useless-escape */
-import $ from 'zepto'
+import $ from 'jquery'
 
 import Vue from 'vue'
 import VueTouch from 'vue-touch'
@@ -52,7 +52,9 @@ router.beforeEach((to, from, next) => {
     }
   }
   next()
-})
+});
+
+store.commit('loading', true);
 
 new Vue({
   router,
@@ -124,7 +126,7 @@ new Vue({
     }
   },
   created() {
-    this.fetchData()
+    // this.fetchData();
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.handleResize)

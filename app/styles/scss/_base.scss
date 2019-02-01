@@ -1,26 +1,26 @@
 html {
   -webkit-text-size-adjust: 100%;
-  position                : relative;
-  min-height              : 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-  text-rendering        : optimizeLegibility;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  font-family           : $font-Curator-Regular;
-  font-size             : 14px;
-  line-height           : 24px;
-  color                 : #B3B3B3;
-  min-height            : 100%;
+  font-family: $font-Curator-Regular;
+  font-size: 14px;
+  line-height: 24px;
+  color: #B3B3B3;
+  min-height: 100%;
   @media (min-width: $d_medium) {
-    font-size  : 16px;
+    font-size: 16px;
     line-height: 26px;
   }
 }
 
 h1 {
   font-family: $font-SelaneMinTen;
-  font-size  : 2.5rem;
+  font-size: 2.5rem;
   line-height: 1.3em;
   @include breakpoint($d_medium) {
     font-size: 4.4rem;
@@ -29,23 +29,23 @@ h1 {
 
 h2 {
   // font-size  : 1.5rem;
-  font-size    : 30px;
-  line-height  : 100%;
+  font-size: 30px;
+  line-height: 100%;
   // margin     : 0;
-  color        : $black;
+  color: $black;
   margin-bottom: 10px;
-  line-height  : 1.2;
+  line-height: 1.2;
 }
 
 h3 {
-  font-size  : 1.8rem;
+  font-size: 1.8rem;
   line-height: 60%;
-  color      : $black;
+  color: $black;
 }
 
 a {
   text-decoration: none;
-  color          : #5a9ddc;
+  color: #5a9ddc;
 
   &:hover {
     color: #467aa5;
@@ -54,10 +54,10 @@ a {
 
 p {
   margin-bottom: 20px;
-  color        : $black;
-  line-height  : 27px;
-  font-size    : 20px;
-  font-family  : $font-SelaneTen;
+  color: $black;
+  line-height: 27px;
+  font-size: 20px;
+  font-family: $font-SelaneTen;
 }
 
 strong {
@@ -69,9 +69,13 @@ button {
 }
 
 li {
-  margin-bottom: 20px;
+  margin: 0;
 }
 
 label {
   color: #333;
+}
+
+:focus {
+  outline: none;
 }

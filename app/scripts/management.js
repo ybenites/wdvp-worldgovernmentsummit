@@ -12,7 +12,12 @@ export default class Management {
         identifier: null,
         date: false,
         polls: false,
-        lang: "en"
+        lang: "en",
+        initial: 1,
+        bf: 1,
+        cf: 0,
+        fg: 0,
+        ft: 0
       },
       getters: {},
       mutations: {
@@ -31,9 +36,14 @@ export default class Management {
         pushResponse(state, response) {
           const responseKeys = {
             polls: 'polls',
+            initial: 'initial',
+            bf: 'bf',
+            cf: 'cf',
+            fg: 'fg',
+            ft: 'ft'
           }
           Object.keys(responseKeys).forEach(key => {
-            const value = response[responseKeys[key]]
+            const value = response[responseKeys[key]];
             if (value != null) state[key] = value
           })
 

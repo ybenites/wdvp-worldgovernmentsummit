@@ -18,6 +18,7 @@
     "d3": "^5.1.0",
     "d3-queue": "^3.0.7",
     "d3-request": "^1.0.6",
+    "d3-drag": "^1.2.3",
     "detect-browser": "^2.4.0",
     "extract-loader": "^2.0.1",
     "extract-text-webpack-plugin": "^3.0.2",
@@ -33,7 +34,7 @@
     "img-loader": "^3.0.1",
     "imports-loader": "^0.8.0",
     "iscroll": "^5.2.0",
-    "zepto": "^1.2.0",
+    "jquery": "^3.3.1",
     "lost": "^8.2.1",
     "node-sass": "^4.10.0",
     "object-assign": "^4.1.1",
@@ -51,7 +52,6 @@
     "resolve-url-loader": "^2.3.0",
     "sass-loader": "^6.0.7",
     "sass-resources-loader": "^1.3.3",
-    "select2": "^4.0.5",
     "style-loader": "^0.21.0",
     "stylelint": "^9.8.0",
     "susy": "^3.0.3",
@@ -70,7 +70,8 @@
   "devDependencies": {
     "gulp": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "select2": "~4.0"
   },
   "scripts": {
     "sph": "webpack --config webpack.config.js"

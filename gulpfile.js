@@ -28,7 +28,7 @@ var env,
 
 
 // values for ENV development,test,production
-env = 'development'
+env = 'production'
 
 
 var env2 = env
@@ -41,7 +41,7 @@ jsSourcesST = ['./scripts/functions.js', './scripts/app.js']
 
 
 jsLibrary = [
-  'zepto',
+  'jquery',
   'd3-selection',
   'd3-transition',
   'd3-dispatch',
@@ -49,7 +49,9 @@ jsLibrary = [
   'd3-timer',
   'd3-queue',
   'd3-array',
-  'iscroll'
+  'd3-drag',
+  'iscroll',
+  'select2'
 ]
 
 
@@ -207,82 +209,85 @@ gulp.task('js', function() {
     bail: false,
     module: {
       rules: [{
-        test: /\.(jpe?g|png|gif|svg)$/,
-        exclude: /node_modules/,
-        include: [
-          path.resolve(__dirname, 'app/images'),
-          path.resolve(__dirname, 'app/images_doc')
-        ],
-        loader: [
-          'url-loader?' + optionsImgHtml,
-          'img-loader'
-        ]
-      }, {
-        test: /\.mp4$/,
-        exclude: /node_modules/,
-        include: [path.resolve(__dirname, 'app/videos')],
-        use: ['url-loader?limit=10&name=[path][name].[ext]&publicPath=&outputPath=']
-      }, {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      }, {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        include: [
-          path.resolve(__dirname, 'app/scripts'),
-          path.resolve(__dirname, 'app/template')
-        ],
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env', 'react'],
-            plugins: ['transform-object-assign', 'transform-runtime']
-          }
-        }
-      }, {
-        test: /\.s?css$/,
-        loader: extractCSSVUE.extract({
-          fallback: 'vue-style-loader',
-          use: [{
-              // loader: 'css-loader?url=false&minimize=true'
-              loader: 'css-loader',
-              options: {
-                minimize: env !== 'development',
-                root: path.join(__dirname, '/app/')
-              }
-            },
-            'postcss-loader',
-            'sass-loader',
-            {
-              loader: 'sass-resources-loader',
-              options: {
-                resources: [path.resolve(__dirname, 'app/styles/scss/_libs.scss')] // for example
-              }
-            }
+          test: /\.(jpe?g|png|gif|svg)$/,
+          exclude: /node_modules/,
+          include: [
+            path.resolve(__dirname, 'app/images'),
+            path.resolve(__dirname, 'app/images_doc')
+          ],
+          loader: [
+            'url-loader?' + optionsImgHtml,
+            'img-loader'
           ]
-        })
-      }, {
-        test: require.resolve('zepto'),
-        loader: 'imports-loader?this=>window'
-      }, {
-        test: /\.html$/,
-        exclude: [path.resolve(__dirname, 'app/template')],
-        use: [{
-          loader: 'file-loader?name=[name].html' + optionsHtml
         }, {
-          loader: 'extract-loader'
+          test: /\.mp4$/,
+          exclude: /node_modules/,
+          include: [path.resolve(__dirname, 'app/videos')],
+          use: ['url-loader?limit=10&name=[path][name].[ext]&publicPath=&outputPath=']
         }, {
-          loader: 'html-loader',
-          options: {
-            minimize: env !== 'development'
+          test: /\.vue$/,
+          loader: 'vue-loader'
+        }, {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          include: [
+            path.resolve(__dirname, 'app/scripts'),
+            path.resolve(__dirname, 'app/template')
+          ],
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['env', 'react'],
+              plugins: ['transform-object-assign', 'transform-runtime']
+            }
           }
-        }]
-      }, {
-        test: /\.(eot|woff|ttf|woff2|svg)$/,
-        exclude: /(node_modules)/,
-        include: path.resolve(__dirname, 'app/fonts'),
-        loader: ['url-loader?importLoaders=1&emitFile=false&' + optionsFonts]
-      }]
+        }, {
+          test: /\.s?css$/,
+          loader: extractCSSVUE.extract({
+            fallback: 'vue-style-loader',
+            use: [{
+                // loader: 'css-loader?url=false&minimize=true'
+                loader: 'css-loader',
+                options: {
+                  minimize: env !== 'development',
+                  root: path.join(__dirname, '/app/')
+                }
+              },
+              'postcss-loader',
+              'sass-loader',
+              {
+                loader: 'sass-resources-loader',
+                options: {
+                  resources: [path.resolve(__dirname, 'app/styles/scss/_libs.scss')] // for example
+                }
+              }
+            ]
+          })
+        },
+        // {
+        //   test: require.resolve('zepto'),
+        //   loader: 'imports-loader?this=>window'
+        // },
+        {
+          test: /\.html$/,
+          exclude: [path.resolve(__dirname, 'app/template')],
+          use: [{
+            loader: 'file-loader?name=[name].html' + optionsHtml
+          }, {
+            loader: 'extract-loader'
+          }, {
+            loader: 'html-loader',
+            options: {
+              minimize: env !== 'development'
+            }
+          }]
+        }, {
+          test: /\.(eot|woff|ttf|woff2|svg)$/,
+          exclude: /(node_modules)/,
+          include: path.resolve(__dirname, 'app/fonts'),
+          loader: ['url-loader?importLoaders=1&emitFile=false&' + optionsFonts]
+        }
+      ]
     },
     plugins: optionsPluginsJS
   }, webpack)).pipe(gulp.dest(outputDir))
